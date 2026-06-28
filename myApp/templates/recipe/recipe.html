@@ -1,0 +1,54 @@
+{% extends 'master/base.html' %}
+
+{% block body %}
+  <title>Recipe | List</title>
+  <div class="container">
+    {% include 'master/message.html' %}
+  </div>
+  <div class="container">
+    {% if request.user.is_authenticated %}
+      <div class="container">
+        <label for="" class="form-control">Want to Add New Data?</label>
+        <a href="{% url 'add_recipe' %}" class="btn btn-primary">ADD DATA</a>
+      </div>
+    {% endif %}
+
+    <h1>Recipes Currently Available</h1>
+    <table class="table table-success table-striped">
+      <thead>
+        <tr>
+          <th>Sl</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Recipe Image</th>
+
+          {% if request.user.is_authenticated %}
+            <th>Action</th>
+          {% endif %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in recipe %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ r.name }}</td>
+            <td>{{ r.description }}</td>
+            <td>{{ r.category }}</td>
+            <td>
+              {% if r.recipe_image %}
+                <img src="/{{ r.recipe_image }}" alt="" width="150px" height="150px" />
+              {% else %}
+                <p>Image Still Loading</p>
+              {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'update_recipe' r.id %}" class="btn btn-warning">Update Recipe</a>
+                <a href="{% url 'delete_recipe' r.id %}" class="btn btn-danger">Delete Recipe</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'master/base.html' %}
+
+{% block body %}
+  <title>Ingredients | Update</title>
+  <h1>Ingredients Update Form</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <select name="recipe" id="" class="form-control">
+      <option value="{{rec.id}}"
+      
+      {% if ingredient.recipe.id == ingredient.recipe.id %}
+        selected
+      {% endif %}
+        >{{ ingredient.recipe.name }}</option>
+    </select>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Recipe Name</label>
+      <input type="text" name="name" value="{{ingredient.name}}" class="form-control" id="exampleInputEmail1" required />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Recipe Name</label>
+      <input type="number" name="quantity" value="{{ingredient.quantity}}" class="form-control" id="exampleInputEmail1" required />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Category</label>
+      <input type="number" name="unit_price" value="{{ingredient.unit_price}}" class="form-control" id="exampleInputPassword1" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}

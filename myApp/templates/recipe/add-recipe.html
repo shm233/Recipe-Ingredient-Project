@@ -1,0 +1,26 @@
+{% extends 'master/base.html' %}
+
+{% block body %}
+  <title>Recipe | Add</title>
+  <h1>Recipe Add Form</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Recipe Name</label>
+      <input type="text" name="name" class="form-control" id="exampleInputEmail1" required />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Description</label>
+      <textarea name="description" class="form-control" id=""></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Category</label>
+      <input type="text" name="category" class="form-control" id="exampleInputPassword1" required />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Recipe Image</label>
+      <input type="file" name="recipe_image" class="form-control" id="exampleInputPassword1" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}

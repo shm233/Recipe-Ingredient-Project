@@ -1,0 +1,38 @@
+{% extends 'master/base.html' %}
+
+{% block body %}
+  <title>Sign | Up</title>
+  <div class="container">
+    {% include 'master/message.html' %}
+  </div>
+  <h1>Sign Up Form</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Username</label>
+      <input type="text" name="username" class="form-control" id="exampleInputEmail1" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Email</label>
+      <input type="email" name="email" class="form-control" id="exampleInputPassword1" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Profile Picture</label>
+      <input type="file" name="picture" class="form-control" id="exampleInputPassword1" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" name="password" class="form-control" id="exampleInputPassword1" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+      <input type="password" name="passwordc" class="form-control" id="exampleInputPassword1" />
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <p>I hereby commit that all the information here is true.</p>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
